@@ -3,7 +3,7 @@ from math import sqrt; from itertools import count, islice
 # input can either be a single number or a comma separated list of numbers
 
 def check():
-    user_input = input('What is the number?')
+    user_input = input('What is the number?\n')
     inputType = 'int'
 
     if ',' in user_input:
@@ -14,10 +14,16 @@ def check():
 
     if inputType is 'list':
         inputArray = user_input.split(',')
+        arePrime = []
+        areNotPrime = []
         for number in inputArray:
             itemIsPrime = isPrime(int(number))
-            itemIsPrimeText = 'NOT' if not itemIsPrime else ''
-            print(f'{number} is {itemIsPrimeText} a prime number')
+            if itemIsPrime:
+                arePrime.append(number)
+            else:
+                areNotPrime.append(number)
+        print(f'Prime numbers: {str(arePrime)}')
+        print(f'NOT Prime numbers: {str(areNotPrime)}')
     else:
         print(isPrime(int(user_input)))
     check()
